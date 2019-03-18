@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 #include "inc/common.h"
-#include "inc/screens.h"
+#include "inc/screen.h"
 
 
 int main()

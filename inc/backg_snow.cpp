@@ -99,7 +99,7 @@ void calc_bg_snow() {
         SNOWFLAKES[i].spdcounter++;
         
         // if counter hits the spd -> move snowflake
-        if (SNOWFLAKES[i].spdcounter > SNOWFLAKES[i].spd) { 
+        if (SNOWFLAKES[i].spdcounter > SNOWFLAKES[i].spd +2 ) { 
             SNOWFLAKES[i].spdcounter=0;
             SNOWFLAKES[i].y++;      // go down :)
             

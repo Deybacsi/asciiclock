@@ -9,6 +9,9 @@ int ACT_HOUR[MAXTIMEZONES],
 
 // string for actual time - "HHMMSS"
 string ACT_TIMESTR[MAXTIMEZONES];
+// for comparing the last timestring
+// if LAST_TIMESTR != ACT_TIMESTR -> second changed
+string LAST_TIMESTR[MAXTIMEZONES];
 
 // get milliseconds time
 // http://www.firstobject.com/getmillicount-milliseconds-portable-c++.htm

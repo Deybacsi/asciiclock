@@ -68,12 +68,12 @@ init_clock_digital();
         // put background frame to layers
         background[ACT_BG_EFFECT][2]();
 
-        stringxy(4, 2,2 , WRITECHAR, ACT_TIMESTR[0]);
+        //stringxy(4, 2,2 , WRITECHAR, ACT_TIMESTR[0]);
 
         draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
 
         
-        stringxy(4, 2,5 , WRITECHAR, to_string(nTimeElapsed));
+        //stringxy(4, 2,5 , WRITECHAR, to_string(nTimeElapsed));
         
         mergelayers();
 

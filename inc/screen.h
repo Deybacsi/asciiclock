@@ -54,6 +54,12 @@ const string BCOLORS[9] = { "40", "41", "42", "43", "44", "45", "46", "47", "49"
 s_simplechar LAYER[MAXLAYERS+1][MAXX][MAXY];
 s_simplechar FINAL[MAXX][MAXY];
 
+// simple writing char for string outputs (for debug, etc)
+s_simplechar WRITECHAR = { 32, 2, 8, false, false, false};
+
+// temporary counters for effects, if needed
+int     INT_COUNTER[3]  = { 0, 0, 0 };
+float   FLOAT_COUNTER[3]= { 0, 0, 0 };
 
 #define clear() printf("\033[H\033[J")
 #define gotoxy(x,y) printf("\033[%d;%dH", (x), (y))

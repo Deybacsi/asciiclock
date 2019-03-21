@@ -7,7 +7,7 @@ const int CLOCKLAYER=2;
 // color of clock
 int CLOCKCOLOR=0;
 
-s_simplechar CLOCKCHAR = { 65, 1, 2, true, true, false };
+s_simplechar CLOCKCHAR = { 32, 1, 2, true, true, false };
 
 // char for clearing the screen
 s_simplechar CLOCKCLEAR = { 32, 0, 8, true, true, true};

@@ -9,6 +9,8 @@
 #include <sstream>
 #include <iomanip>
 #include <sys/timeb.h>
+#include <math.h>
+#define PI 3.14159265
 
 using namespace std;
 
@@ -24,7 +26,9 @@ using namespace std;
 #include "inc/backg_snow.cpp"
 #include "inc/backg_starfield.cpp"
 
-s_simplechar WRITECHAR = { 32, 2, 8, false, false, false};
+#include "inc/backg_plasma.cpp"
+
+
 
 // define the effects
 typedef void (*myfunctions)();
@@ -34,34 +38,55 @@ typedef void (*myfunctions)();
 // 2 - draw act frame to layers
 
 myfunctions background[][3] = {
-    { init_bg_snow, calc_bg_snow, draw_bg_snow},    // snow effect
-    { init_bg_star, calc_bg_star, draw_bg_star}     // starfield
+    { init_bg_snow, calc_bg_snow, draw_bg_snow},            // snow effect
+    { init_bg_star, calc_bg_star, draw_bg_star},            // starfield
+    { init_bg_plasma, calc_bg_plasma, draw_bg_plasma}       // plasma
 };
 
+const int EFFECTNO=3;
+int ACT_BG_EFFECT=0;
 
-// the actual background effect
-int ACT_BG_EFFECT = 1;
 
-int main()
-{	int ch;
+void init_all() {
+    initscreen();
+    clear();
+    ACTDIGITDESIGN=rand() % 3;
+    // the actual background effect
+    ACT_BG_EFFECT = rand() % EFFECTNO;
+    
+    // initialize background
+    background[ACT_BG_EFFECT][0]();
+    
+}
+
+
+int main(){
+    int ch;
+
 
 
     srand(GetMilliCount());
-    initscreen();
-    clear();
+
+
+    
 
     // elapsed time counter in msec
     int nTimeElapsed =0;
 
 
-    // initialize background
-    background[ACT_BG_EFFECT][0]();
-init_clock_digital();
+    init_all();
+
+    init_clock_digital();
     do {
         int nTimeStart = GetMilliCount();
 
-
         checktime();
+        if (LAST_MINSTR[0] != ACT_MINSTR[0]) {
+            init_all();
+
+        }
+
+        
 
         // calculate next background frame
         background[ACT_BG_EFFECT][1]();
@@ -72,7 +97,7 @@ init_clock_digital();
 
         draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
 
-        
+
         //stringxy(4, 2,5 , WRITECHAR, to_string(nTimeElapsed));
         
         mergelayers();
@@ -83,7 +108,7 @@ init_clock_digital();
         //printf("%d:%d:%s", ACT_HOUR[0], ACT_MIN[0],inttostr2(ACT_SEC[0]).c_str());
         //printf("%s", ACT_TIMESTR[0].c_str());
 
-
+        LAST_MINSTR[0]=ACT_MINSTR[0];
 
         // get elapsed time in ms
         int nTimeElapsed = GetMilliSpan( nTimeStart );

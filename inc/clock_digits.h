@@ -1,8 +1,8 @@
 // basic digital clock digits
 
-int ACTDIGITDESIGN=1;
+int ACTDIGITDESIGN=2;
 
-const int MAXDIGITDESIGNS=2;
+const int MAXDIGITDESIGNS=3;
 
 struct s_digitdesign {
     unsigned int x;
@@ -10,6 +10,7 @@ struct s_digitdesign {
 };
 
 s_digitdesign DIGITDESIGNS[MAXDIGITDESIGNS] = {
+    { 8, 8},
     { 8, 8},
     { 8, 8}
 };
@@ -234,5 +235,115 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "        ",
         "        ",
         "        " }
-    }    
+    },
+    {
+        {
+        "  xxxx  ",
+        " xx     ",
+        " xx  xx ",
+        " xx  xx ",
+        " xx  xx ",
+        " xx  xx ",
+        " xxxxxx ",
+        "  xxxx  " },
+        {
+        "    xx  ",
+        "        ",
+        "  xxxx  ",
+        "    xx  ",
+        "    xx  ",
+        "    xx  ",
+        "   xxxx ",
+        "   xxxx " },
+        {
+        " xxxxxx ",
+        " xx     ",
+        "     xx ",
+        "  xxxxx ",
+        " xx     ",
+        " xx  xx ",
+        " xxxxxx ",
+        " xxxxxx " },
+        {
+        " xxxxxx ",
+        " xx     ",
+        "     xx ",
+        "  xxxxx ",
+        "     xx ",
+        " xx  xx ",
+        " xxxxxx ",
+        " xxxxx  " },
+        {
+        " xx  xx ",
+        " xx     ",
+        " xx  xx ",
+        " xxxxxx ",
+        "     xx ",
+        "     xx ",
+        "   xxxxx",
+        "   xxxxx" },
+        {
+        " xxxxxx ",
+        "     xx ",
+        " xx     ",
+        " xxxxxx ",
+        "     xx ",
+        " xx  xx ",
+        " xxxxxx ",
+        "  xxxx  " },
+        {
+        " xxxxxx ",
+        "     xx ",
+        " xx     ",
+        " xxxxx  ",
+        " xx  xx ",
+        " xx  xx ",
+        " xxxxxx ",
+        "  xxxx  " },
+        {
+        " xxxxxx ",
+        " xx     ",
+        "     xx ",
+        "    xx  ",
+        "    xx  ",
+        "    xx  ",
+        "   xxxx ",
+        "   xxxx " },
+        {
+        "  xxxx  ",
+        " xx  xx ",
+        " xx  xx ",
+        "  xxxx  ",
+        " xx  xx ",
+        " xx  xx ",
+        " xxxxxx ",
+        "  xxxx  " },
+        {
+        "  xxxx  ",
+        " xx  xx ",
+        " xx  xx ",
+        "  xxxxx ",
+        "     xx ",
+        " xx  xx ",
+        " xxxxxx ",
+        "  xxxx  " },
+        {
+        "        ",
+        "   xx   ",
+        "   xx   ",
+        "        ",
+        "   xx   ",
+        "   xx   ",
+        "        ",
+        "        " },
+        {
+        "        ",
+        "        ",
+        "        ",
+        "        ",
+        "        ",
+        "        ",
+        "        ",
+        "        " }
+    }        
 };

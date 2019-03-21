@@ -8,10 +8,15 @@ int ACT_HOUR[MAXTIMEZONES],
     ACT_SEC[MAXTIMEZONES];
 
 // string for actual time - "HHMMSS"
-string ACT_TIMESTR[MAXTIMEZONES];
+string  ACT_TIMESTR[MAXTIMEZONES],
+        ACT_MINSTR[MAXTIMEZONES]; // "HHMM"
+
 // for comparing the last timestring
 // if LAST_TIMESTR != ACT_TIMESTR -> second changed
-string LAST_TIMESTR[MAXTIMEZONES];
+string  LAST_TIMESTR[MAXTIMEZONES],
+        LAST_MINSTR[MAXTIMEZONES];
+
+
 
 // get milliseconds time
 // http://www.firstobject.com/getmillicount-milliseconds-portable-c++.htm
@@ -52,6 +57,7 @@ void checktime() {
     ACT_MIN[0]=ltm->tm_min;
     ACT_SEC[0]=ltm->tm_sec;
     ACT_TIMESTR[0]=inttostr2(ACT_HOUR[0])+inttostr2(ACT_MIN[0])+inttostr2(ACT_SEC[0]);
+    ACT_MINSTR[0]=inttostr2(ACT_HOUR[0])+inttostr2(ACT_MIN[0]);
 }
 
 

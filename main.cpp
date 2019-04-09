@@ -25,9 +25,10 @@ using namespace std;
 
 #include "inc/backg_snow.cpp"
 #include "inc/backg_starfield.cpp"
-
 #include "inc/backg_plasma.cpp"
+#include "inc/backg_matrix.cpp"
 
+#include "inc/foreg_cube.cpp"
 
 
 // define the effects
@@ -40,35 +41,43 @@ typedef void (*myfunctions)();
 myfunctions background[][3] = {
     { init_bg_snow, calc_bg_snow, draw_bg_snow},            // snow effect
     { init_bg_star, calc_bg_star, draw_bg_star},            // starfield
-    { init_bg_plasma, calc_bg_plasma, draw_bg_plasma}       // plasma
+    { init_bg_plasma, calc_bg_plasma, draw_bg_plasma},      // plasma
+    { init_bg_matrix, calc_bg_matrix, draw_bg_matrix}      // matrix
+     
 };
 
-const int EFFECTNO=3;
-int ACT_BG_EFFECT=0;
+myfunctions foreground[][3] = {
+    { init_fg_cube, calc_fg_cube, draw_fg_cube}             // cube
+};
+
+const int   BG_EFFECTNO=4,
+            FG_EFFECTNO=1;
+
+int         ACT_BG_EFFECT=3,
+            ACT_FG_EFFECT=0;
 
 
 void init_all() {
     initscreen();
     clear();
-    ACTDIGITDESIGN=rand() % 3;
+    // randomize clock charset design
+    ACTDIGITDESIGN=rand() % MAXDIGITDESIGNS;
+    // randomize clock color
+    CLOCKCOLOR=rand() % 8;
     // the actual background effect
-    ACT_BG_EFFECT = rand() % EFFECTNO;
+    ACT_BG_EFFECT = rand() % BG_EFFECTNO;
     
-    // initialize background
+    // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
-    
+    //background[ACT_FG_EFFECT][0]();
+        
 }
 
 
 int main(){
     int ch;
 
-
-
     srand(GetMilliCount());
-
-
-    
 
     // elapsed time counter in msec
     int nTimeElapsed =0;
@@ -83,13 +92,12 @@ int main(){
         checktime();
         if (LAST_MINSTR[0] != ACT_MINSTR[0]) {
             init_all();
-
         }
-
-        
+     
 
         // calculate next background frame
         background[ACT_BG_EFFECT][1]();
+
         // put background frame to layers
         background[ACT_BG_EFFECT][2]();
 

@@ -55,7 +55,7 @@ s_simplechar LAYER[MAXLAYERS+1][MAXX][MAXY];
 s_simplechar FINAL[MAXX][MAXY];
 
 // simple writing char for string outputs (for debug, etc)
-s_simplechar WRITECHAR = { 32, 2, 8, false, false, false};
+s_simplechar WRITECHAR = { 32, 7, 8, false, false, false};
 
 // temporary counters for effects, if needed
 int     INT_COUNTER[3]  = { 0, 0, 0 };
@@ -88,6 +88,30 @@ void stringxy(int layer, int x, int y, s_simplechar &simplechar, string s ) {
     for (i=0; i<s.length(); i++) {
         simplechar.chr=s[i];
         charxy(layer, x+i, y, simplechar);
+    }
+
+}
+
+// draws a line
+void linexy (int layer, int x1, int y1, int x2, int y2, s_simplechar &simplechar ) {
+    int x,y=0;
+    int kulx=x2-x1;
+    int kuly=y2-y1;
+    float fx,fy=0;
+
+    if (abs(kulx) > abs(kuly)){
+       
+        for (x=x1; x<x2; x++) {
+            fy= (float) (y2-y1) / (x2-x1) ;
+            charxy(layer, x, (int)  y1 + fy * x, simplechar );
+        }
+
+    } else {
+        for (y=y1; y<y2; y++) {
+            fx= (float) (x2-x1) / (y2-y1) ;
+            charxy(layer, (int)  x1 + fx * y, y, simplechar );
+        }        
+
     }
 
 }

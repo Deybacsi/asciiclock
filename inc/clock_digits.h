@@ -238,7 +238,7 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
     },
     {
         {
-        "  xxxx  ",
+        "  xxxxx ",
         " xx     ",
         " xx  xx ",
         " xx  xx ",
@@ -248,8 +248,8 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "  xxxx  " },
         {
         "    xx  ",
-        "        ",
-        "  xxxx  ",
+        "    xx  ",
+        "   xxx  ",
         "    xx  ",
         "    xx  ",
         "    xx  ",
@@ -310,8 +310,8 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "   xxxx ",
         "   xxxx " },
         {
-        "  xxxx  ",
-        " xx  xx ",
+        "  xxxxx ",
+        " xx     ",
         " xx  xx ",
         "  xxxx  ",
         " xx  xx ",
@@ -319,8 +319,8 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         " xxxxxx ",
         "  xxxx  " },
         {
-        "  xxxx  ",
-        " xx  xx ",
+        "  xxxxx ",
+        " xx     ",
         " xx  xx ",
         "  xxxxx ",
         "     xx ",

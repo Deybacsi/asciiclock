@@ -8,7 +8,7 @@ int
             plasma_time=0,
             PLASMACOLOR=0;
 
-const int   PLASMALAYER     =1,             // where to draw effect
+const int   PLASMALAYER     =1,             // where to draw effect - layer no
             MAXPLASMACHARS  =10,            // number of chars to draw
             MAXPLASMACOLORS =2;             // number of colorsets
 

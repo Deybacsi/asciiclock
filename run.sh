@@ -1,3 +1,5 @@
+clear
+
 g++ main.cpp -o bin/asciiclock -Werror -g
 
 if [ $? -eq 0 ];then

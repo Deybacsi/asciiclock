@@ -75,6 +75,9 @@ void init_bg_snow(){
     for (x=0; x<=SCREENX; x++) {
         SNOWBG[x][SCREENY-1]=1;
     }
+    CLOCKCHAR.transpbcol=false;
+    CLOCKCHAR.transpcol=true;
+    CLOCKCHAR.transpchr=true;
 }
 
 // increase density of the snow at the ground

@@ -53,7 +53,9 @@ void init_bg_star(){
         calc_new_star(i);
         STARS[i].x=rand() % SCREENX;   // give them initial x coords instead of left of the screen
     } 
-   
+    CLOCKCHAR.transpbcol=false;
+    CLOCKCHAR.transpcol=true;
+    CLOCKCHAR.transpchr=true;
 }
 
 

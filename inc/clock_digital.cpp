@@ -18,7 +18,7 @@ s_simplechar CLOCKCLEAR = { 32, 0, 8, true, true, true};
 bool colon;
 
 void init_clock_digital() {
-    CLOCKCOLOR=rand() % 8;
+    
 };
 
 void draw_clock_digit(int layer, int px, int py, int digit, s_simplechar chr ) {

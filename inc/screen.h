@@ -1,4 +1,15 @@
-int SCREENX, SCREENY;
+
+
+/*
+ * If you have usual thin and tall rectangle characters, leave it on 2
+ * 
+ * If you have characters like a square with equal height and width, set it to 1
+ * 
+ * Or you can fine-tune it to any float value, if needed
+ */
+const float SCREEN_CHAR_ASPECT_RATIO=2;
+
+
 
 // frames / sec
 const int   FPS=25,
@@ -45,10 +56,12 @@ const int   C_BLACK   = 0,
 
             C_BGTRANS = 8;  // default transparent bg color -> 49m
 
-// ANSI ascape codes to print colors
+// ANSI escape codes to print colors
 const string COLORS[16] = { "0;30", "0;31", "0;32", "0;33", "0;34", "0;35", "0;36", "0;37", "1;30", "1;31", "1;32", "1;33", "1;34", "1;35", "1;36", "1;37" };
 const string BCOLORS[9] = { "40", "41", "42", "43", "44", "45", "46", "47", "49" };
 
+// the screen size will be there
+int SCREENX, SCREENY;
 
 // layers with chars & attributes
 s_simplechar LAYER[MAXLAYERS+1][MAXX][MAXY];
@@ -57,9 +70,7 @@ s_simplechar FINAL[MAXX][MAXY];
 // simple writing char for string outputs (for debug, etc)
 s_simplechar WRITECHAR = { 32, 7, 8, false, false, false};
 
-// temporary counters for effects, if needed
-int     INT_COUNTER[3]  = { 0, 0, 0 };
-float   FLOAT_COUNTER[3]= { 0, 0, 0 };
+
 
 #define clear() printf("\033[H\033[J")
 #define gotoxy(x,y) printf("\033[%d;%dH", (x), (y))
@@ -95,22 +106,35 @@ void stringxy(int layer, int x, int y, s_simplechar &simplechar, string s ) {
 // draws a line
 void linexy (int layer, int x1, int y1, int x2, int y2, s_simplechar &simplechar ) {
     int x,y=0;
+
+    float fx,fy=0;
+    int t=0;
+   
+    
+
     int kulx=x2-x1;
     int kuly=y2-y1;
-    float fx,fy=0;
 
-    if (abs(kulx) > abs(kuly)){
-       
-        for (x=x1; x<x2; x++) {
-            fy= (float) (y2-y1) / (x2-x1) ;
-            charxy(layer, x, (int)  y1 + fy * x, simplechar );
-        }
+    stringxy (5, 12, 2, WRITECHAR, to_string(x1) );
+    stringxy (5, 12, 3, WRITECHAR, to_string(y1) );
+
+    stringxy (5, 12, 5, WRITECHAR, to_string(x2) );
+    stringxy (5, 12, 6, WRITECHAR, to_string(y2) );
+
+    if (abs(kulx) >= abs(kuly)){
+        fy= (float) (y2-y1) / (x2-x1) ;
+        if (x1>x2) { t=x1; x1=x2; x2=t; t=y1; y1=y2; y2=t;}
+        for (x=x1; x<=x2; x++) { charxy(layer, x, round(y1 + fy * (x-x1)), simplechar ); }
+
 
     } else {
-        for (y=y1; y<y2; y++) {
-            fx= (float) (x2-x1) / (y2-y1) ;
-            charxy(layer, (int)  x1 + fx * y, y, simplechar );
-        }        
+        fx= (float) (x2-x1) / (y2-y1) ;
+        if (y1>y2) { t=x1; x1=x2; x2=t; t=y1; y1=y2; y2=t; }
+
+            for (y=y1; y<=y2; y++) { charxy(layer, round(x1 + fx * (y-y1)), y, simplechar ); }        
+
+
+ 
 
     }
 

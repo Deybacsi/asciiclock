@@ -17,6 +17,7 @@ using namespace std;
 
 #include "inc/common.h"
 #include "inc/screen.h"
+#include "inc/3d.h"
 
 #include "inc/clock_digits.h"
 
@@ -69,7 +70,7 @@ void init_all() {
     
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
-    //background[ACT_FG_EFFECT][0]();
+    foreground[ACT_FG_EFFECT][0]();
         
 }
 
@@ -105,6 +106,11 @@ int main(){
 
         draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
 
+        // calculate next background frame
+        foreground[ACT_FG_EFFECT][1]();
+
+        // put background frame to layers
+        foreground[ACT_FG_EFFECT][2]();
 
         //stringxy(4, 2,5 , WRITECHAR, to_string(nTimeElapsed));
         

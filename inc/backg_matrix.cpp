@@ -49,7 +49,8 @@ void calc_bg_matrix() {
             MATRIXCHRS[x].counter=0;
             mychr={ (char) (rand() % 93 + 33), MATRIX_BGCOL, 8, false, false, false};
             charxy(MATRIX_FGLAYER, x, MATRIXCHRS[x].y, mychr  );
-            charxy(MATRIX_FGLAYER, x, MATRIXCHRS[x].y-MATRIXCHRS[x].len, WRITECHAR );
+            s_simplechar CLRCHAR={ 32, 7, 8, false, false, false};
+            charxy(MATRIX_FGLAYER, x, MATRIXCHRS[x].y-MATRIXCHRS[x].len, CLRCHAR );
             MATRIXCHRS[x].chr={ (char) (rand() % 93 + 33), MATRIX_FGCOL, 8, false, false, false};
             MATRIXCHRS[x].y++;
             if (MATRIXCHRS[x].y-MATRIXCHRS[x].len > SCREENY ) {

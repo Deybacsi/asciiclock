@@ -9,10 +9,3 @@ else
    echo "There are compilation errors!"
 fi
 
-
-
-
-
-
-
-

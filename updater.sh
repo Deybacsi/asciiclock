@@ -3,8 +3,6 @@ clockpid=$(ps -ef | grep asciiclock | grep -vE '(grep|g++)' | awk '{print }')
 
 myfetch=$((git fetch --dry-run) 2>&1)
 
-echo "---"
-echo $myfetch
 echo $clockpid
 
 if [ -z "$myfetch" ]; then

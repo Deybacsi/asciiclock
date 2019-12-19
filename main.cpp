@@ -47,9 +47,11 @@ myfunctions background[][3] = {
      
 };
 
+/*
 myfunctions foreground[][3] = {
     { init_fg_cube, calc_fg_cube, draw_fg_cube}             // cube
 };
+*/
 
 const int   BG_EFFECTNO=4,
             FG_EFFECTNO=1;
@@ -70,7 +72,7 @@ void init_all() {
     
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
-    foreground[ACT_FG_EFFECT][0]();
+    // foreground[ACT_FG_EFFECT][0]();
         
 }
 
@@ -106,11 +108,11 @@ int main(){
 
         draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
 
-        // calculate next background frame
-        foreground[ACT_FG_EFFECT][1]();
+        // calculate next foreground frame
+        // foreground[ACT_FG_EFFECT][1]();
 
         // put background frame to layers
-        foreground[ACT_FG_EFFECT][2]();
+        // foreground[ACT_FG_EFFECT][2]();
 
         //stringxy(4, 2,5 , WRITECHAR, to_string(nTimeElapsed));
         

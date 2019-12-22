@@ -69,7 +69,7 @@ void init_all() {
     CLOCKCOLOR=rand() % 8;
     // the actual background effect
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
-    
+    // ACT_BG_EFFECT=2;
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
     // foreground[ACT_FG_EFFECT][0]();

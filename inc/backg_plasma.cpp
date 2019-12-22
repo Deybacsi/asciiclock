@@ -21,8 +21,8 @@ float sn[361], cs[361];
 s_simplechar PLASMACHARS[MAXPLASMACOLORS][MAXPLASMACHARS]={
     {
         { 32,  1,  8, false, false, false },    // dummy char 0 is for nothing
-        { 95,  C_YELLOW,  8, false, false, true },
         { 46,  C_YELLOW,  8, false, false, true },
+        { 45,  C_YELLOW,  8, false, false, true },
         { 120, C_YELLOW, 8, false, false, true },
 
         { 120, C_LGREEN, 8, false, false, true },
@@ -30,13 +30,13 @@ s_simplechar PLASMACHARS[MAXPLASMACOLORS][MAXPLASMACHARS]={
         { 120, C_LGREEN, 8, false, false, true },
 
         { 120, C_YELLOW, 8, false, false, true },
-        { 46,  C_YELLOW,  8, false, false, true },
-        { 95,  C_YELLOW,  8, false, false, true }
+        { 45,  C_YELLOW,  8, false, false, true },
+        { 46,  C_YELLOW,  8, false, false, true }
     },    
     {
         { 32,  1,  8, false, false, false },    // dummy char 0 is for nothing
-        { 95,  C_BLUE,  8, false, false, true },
         { 46,  C_BLUE,  8, false, false, true },
+        { 45,  C_BLUE,  8, false, false, true },
         { 120, C_BLUE, 8, false, false, true },
 
         { 43, C_LBLUE, 8, false, false, true },
@@ -44,8 +44,8 @@ s_simplechar PLASMACHARS[MAXPLASMACOLORS][MAXPLASMACHARS]={
         { 43, C_LBLUE, 8, false, false, true },
 
         { 120, C_BLUE, 8, false, false, true },
-        { 46,  C_BLUE,  8, false, false, true },
-        { 95,  C_BLUE,  8, false, false, true }
+        { 45,  C_BLUE,  8, false, false, true },
+        { 46,  C_BLUE,  8, false, false, true }
     }          
 };
 

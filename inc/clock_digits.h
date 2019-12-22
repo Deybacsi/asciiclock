@@ -12,7 +12,8 @@ struct s_digitdesign {
 s_digitdesign DIGITDESIGNS[MAXDIGITDESIGNS] = {
     { 8, 8},
     { 8, 8},
-    { 8, 8}
+    { 8, 8},
+
 };
 
 const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
@@ -236,6 +237,7 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "        ",
         "        " }
     },
+
     {
         {
         "  xxxxx ",
@@ -345,5 +347,7 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "        ",
         "        ",
         "        " }
-    }        
+    }
+
+      
 };

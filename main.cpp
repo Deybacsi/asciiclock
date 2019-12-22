@@ -7,6 +7,7 @@
 #include <thread>
 #include <ctime>
 #include <sstream>
+#include <fstream>
 #include <iomanip>
 #include <sys/timeb.h>
 #include <math.h>
@@ -81,6 +82,7 @@ void init_all() {
 
 int main(){
     int ch;
+    string btcprice;
 
     srand(GetMilliCount());
 
@@ -99,12 +101,21 @@ int main(){
             init_all();
         }
      
+        string line;
+        ifstream myfile ("price.txt");
+        if (myfile.is_open())
+        {
+            getline (myfile,btcprice);
+            myfile.close();
+        }
 
         // calculate next background frame
         background[ACT_BG_EFFECT][1]();
 
         // put background frame to layers
         background[ACT_BG_EFFECT][2]();
+
+        
 
         //stringxy(4, 2,2 , WRITECHAR, ACT_TIMESTR[0]);
 
@@ -118,6 +129,8 @@ int main(){
 
         //stringxy(4, 2,5 , WRITECHAR, to_string(nTimeElapsed));
         
+        stringxy (5, float (SCREENX /2 -3), float(SCREENY /2)+5, WRITECHAR, "$"+btcprice );
+
         mergelayers();
 
         printscreen();

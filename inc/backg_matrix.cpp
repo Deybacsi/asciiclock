@@ -31,6 +31,7 @@ void matrix_newchar (int x) {
 
 void init_bg_matrix() {
     int x;
+    clearlayer(MATRIX_BGLAYER, WRITECHAR);
     clearlayer(MATRIX_FGLAYER, WRITECHAR);
     for( x = 0; x < SCREENX; x++)
     {

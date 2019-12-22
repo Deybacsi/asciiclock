@@ -39,9 +39,9 @@ s_simplechar PLASMACHARS[MAXPLASMACOLORS][MAXPLASMACHARS]={
         { 43,  C_BLUE,  8, false, false, true },
         { 120, C_BLUE, 8, false, false, true },
 
-        { 43, C_LBLUE, 8, false, false, true },
+        { 120, C_LBLUE, 8, false, false, true },
         { 88,  C_LBLUE, 8, false, false, true },
-        { 43, C_LBLUE, 8, false, false, true },
+        { 120, C_LBLUE, 8, false, false, true },
 
         { 120, C_BLUE, 8, false, false, true },
         { 43,  C_BLUE,  8, false, false, true },

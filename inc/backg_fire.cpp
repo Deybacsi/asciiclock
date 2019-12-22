@@ -1,5 +1,5 @@
 const int   FIRELAYER     =1,             // where to draw effect - layer no
-            MAXFIRECHARS  =22,            // number of chars to draw
+            MAXFIRECHARS  =23,            // number of chars to draw
             MAXFIRECOLORS =2;             // number of colorsets
             
 int MAXFIRERANDOM = 0; 
@@ -15,6 +15,7 @@ s_simplechar FIRECLEAR = { 32, 0, 8, false, false, false};
 s_simplechar FIRECHARS[MAXFIRECOLORS][MAXFIRECHARS]={
     {
         { 32,  1,  8, false, false, false },    // dummy char 0 is for nothing
+        { 32,  0,  8, false, false, false },
         { 32,  0,  8, false, false, false },
         { 32,  0,  8, false, false, false },
         { 32,  0,  8, false, false, false },
@@ -108,7 +109,7 @@ void calc_bg_fire() {
     draw_fire_random();
     for (y=1; y<=SCREENY; y++) {
         for (x=1; x<=SCREENX-1; x++) {
-            average=floor( (FIREBUFFER[0][y-1][x]+FIREBUFFER[0][y][x-1]+FIREBUFFER[0][y][x+1]+FIREBUFFER[0][y+1][x]) / 4 );
+            average=floor( (FIREBUFFER[0][y-1][x]+FIREBUFFER[0][y][x-1]+FIREBUFFER[0][y][x]+FIREBUFFER[0][y][x+1]+FIREBUFFER[0][y+1][x]) / 5 );
             if (average>MAXFIRECHARS) { average=MAXFIRECHARS; }
             FIREBUFFER[1][y-1][x]=average;
             charxy(FIRELAYER,x,y,FIRECHARS[0][FIREBUFFER[1][y][x]]);

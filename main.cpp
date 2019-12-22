@@ -28,6 +28,7 @@ using namespace std;
 #include "inc/backg_starfield.cpp"
 #include "inc/backg_plasma.cpp"
 #include "inc/backg_matrix.cpp"
+#include "inc/backg_fire.cpp"
 
 #include "inc/foreg_cube.cpp"
 
@@ -43,7 +44,8 @@ myfunctions background[][3] = {
     { init_bg_snow, calc_bg_snow, draw_bg_snow},            // snow effect
     { init_bg_star, calc_bg_star, draw_bg_star},            // starfield
     { init_bg_plasma, calc_bg_plasma, draw_bg_plasma},      // plasma
-    { init_bg_matrix, calc_bg_matrix, draw_bg_matrix}      // matrix
+    { init_bg_matrix, calc_bg_matrix, draw_bg_matrix},      // matrix
+    { init_bg_fire, calc_bg_fire, draw_bg_fire}             // fire
      
 };
 
@@ -53,7 +55,7 @@ myfunctions foreground[][3] = {
 };
 */
 
-const int   BG_EFFECTNO=4,
+const int   BG_EFFECTNO=5,
             FG_EFFECTNO=1;
 
 int         ACT_BG_EFFECT=3,
@@ -69,7 +71,7 @@ void init_all() {
     CLOCKCOLOR=rand() % 8;
     // the actual background effect
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
-    // ACT_BG_EFFECT=2;
+    //ACT_BG_EFFECT=4;
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
     // foreground[ACT_FG_EFFECT][0]();

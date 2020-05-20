@@ -84,7 +84,10 @@ void init_all() {
     CLOCKCOLOR=rand() % 8;
     // get a random background effect
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
-    //ACT_BG_EFFECT=0;
+
+    // to setup a constant effect
+    // ACT_BG_EFFECT=3;
+    
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
     foreground[ACT_FG_EFFECT][0]();
@@ -147,7 +150,11 @@ int main(){
         }
 
         // write out btc price
-        stringxy (5, float (SCREENX /2 -3), float(SCREENY /2)+5, WRITECHAR, " $"+btcprice+" " );
+
+        // uncomment the below line if you want BTC price display
+        // don't forget to add price.sh to your crontab
+
+        //stringxy (5, float (SCREENX /2 -3), float(SCREENY /2)+5, WRITECHAR, " $"+btcprice+" " );
 
         // merge all layers and draw to screen
         mergelayers();

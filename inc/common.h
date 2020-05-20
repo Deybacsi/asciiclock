@@ -60,4 +60,10 @@ void checktime() {
     ACT_MINSTR[0]=inttostr2(ACT_HOUR[0])+inttostr2(ACT_MIN[0]);
 }
 
+// return the count of chars available to read
+int keyPressed() {
+    int i;
+    ioctl(0, FIONREAD, &i);
+    return i; 
+}
 

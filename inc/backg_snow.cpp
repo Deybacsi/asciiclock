@@ -1,6 +1,6 @@
 // basic snow background
 
-const int   MAXSNOW=200,    // number of flakes
+const int   MAXSNOW=100,    // number of flakes
             MAXSPD=2,       // number of snowflake speed types - 0 1 2
             SNOWLAYER=1;    // where to draw snow
 

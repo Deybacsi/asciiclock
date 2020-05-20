@@ -26,13 +26,15 @@ const int   MAXY = 200;
 // common definitions
 
 // the simple char type
+// transparent means, the chars on layers below this will be visible
+// othervise it will overwrite the lower layers' data
 struct s_simplechar {
-    char chr = 32;
-    unsigned short int col = 0;
-    unsigned short int bcol  = 8;
-    bool transpchr = true;
-    bool transpcol = true;
-    bool transpbcol= true;
+    char chr = 32;                  // character
+    unsigned short int col = 0;     // color
+    unsigned short int bcol  = 8;   // background color
+    bool transpchr = true;          // character is transparent?
+    bool transpcol = true;          // color is transparent?
+    bool transpbcol= true;          // backgorund color is transparent?
 };
 
 // color code constants
@@ -69,11 +71,15 @@ s_simplechar FINAL[MAXX][MAXY];
 
 // simple writing char for string outputs (for debug, etc)
 s_simplechar WRITECHAR = { 32, 7, 8, false, false, false};
-
+// simple transparent clear char
+s_simplechar CLEARCHAR = { 32, 7, 8, true, true, true};
 
 
 #define clear() printf("\033[H\033[J")
 #define gotoxy(x,y) printf("\033[%d;%dH", (x), (y))
+#define hideCursor() printf("\033[?25l");
+#define showCursor() printf("\033[?25h");
+#define textReset() printf("\033[0m");
 
 
 // initialize screen
@@ -85,7 +91,7 @@ void initscreen(){
 
 }
 
-// puts a char to x,y at given layer
+// puts a char to x,y at given layer with simpechar formatting
 void charxy(int layer, int x, int y, s_simplechar &simplechar) {
     if ( x >= 0 && x <= SCREENX && y >= 0 && y<=SCREENY ) {
         LAYER[layer][x][y]=simplechar;
@@ -106,35 +112,22 @@ void stringxy(int layer, int x, int y, s_simplechar &simplechar, string s ) {
 // draws a line
 void linexy (int layer, int x1, int y1, int x2, int y2, s_simplechar &simplechar ) {
     int x,y=0;
-
-    float fx,fy=0;
+    float fx,fy=0;      // line angle
     int t=0;
-   
-    
-
-    int kulx=x2-x1;
+    int kulx=x2-x1;     
     int kuly=y2-y1;
 
-    stringxy (5, 12, 2, WRITECHAR, to_string(x1) );
-    stringxy (5, 12, 3, WRITECHAR, to_string(y1) );
-
-    stringxy (5, 12, 5, WRITECHAR, to_string(x2) );
-    stringxy (5, 12, 6, WRITECHAR, to_string(y2) );
-
+    // line is wide or tall?
     if (abs(kulx) >= abs(kuly)){
         fy= (float) (y2-y1) / (x2-x1) ;
         if (x1>x2) { t=x1; x1=x2; x2=t; t=y1; y1=y2; y2=t;}
         for (x=x1; x<=x2; x++) { charxy(layer, x, round(y1 + fy * (x-x1)), simplechar ); }
-
 
     } else {
         fx= (float) (x2-x1) / (y2-y1) ;
         if (y1>y2) { t=x1; x1=x2; x2=t; t=y1; y1=y2; y2=t; }
 
             for (y=y1; y<=y2; y++) { charxy(layer, round(x1 + fx * (y-y1)), y, simplechar ); }        
-
-
- 
 
     }
 
@@ -147,6 +140,15 @@ void clearlayer(int layer, s_simplechar &simplechar) {
         for (x=0; x<=SCREENX; x++) {
             LAYER[layer][x][y]=simplechar;
         }
+    }
+}
+
+// fill all layers with char
+void clearalllayer(s_simplechar simplechar) {
+    int l;
+    clearlayer(0, WRITECHAR);           // the 0. layer needs to be filled with non transparent chars, otherwise it will not rendered to the screen
+    for (l=1; l< MAXLAYERS; l++) {      // others can be filled with anything
+        clearlayer(l, simplechar);
     }
 }
 
@@ -174,7 +176,7 @@ void printscreen() {
             putchar(FINAL[x][y].chr);
         
         }
-        if ( y < SCREENY-1) putchar(10) ;
+        if ( y < SCREENY-1) { putchar(10); putchar(13); }
     }
     
 }

@@ -1,11 +1,17 @@
 
 const int FG_CUBE_LAYER=4;
 
-s_simplechar CUBECHAR={ 32, 2, 1, true, false, false};
-s_simplechar CUBECLR={ 32, 2, 1, true, true, true};
+// chars to draw the cube
+s_simplechar CUBECHAR={ 32, C_LBLUE, C_BLUE, true, false, false};
+s_simplechar CUBECLR={ 32, C_LBLUE, C_BLUE, true, true, true};
 
+// where to put our cube
+// can be handy for anims later
 s_2dcoord CUBECENTER={ 0, 0};
 
+
+// size of the cube in world units
+// a whole edge of cube will be CUBEEDGE*2 long
 const int CUBEEDGE=20;
 
 // default cube coordinates in world units
@@ -71,9 +77,6 @@ void draw_fg_cube() {
         CUBECENTER.x+c3dto2d(CUBE[7]).x, CUBECENTER.y+c3dto2d(CUBE[7]).y,
         CUBECENTER.x+c3dto2d(CUBE[4]).x, CUBECENTER.y+c3dto2d(CUBE[4]).y, CUBECHAR);
 
-
-
-    
     for (i=0; i<4; i++) {
         linexy( FG_CUBE_LAYER,
             CUBECENTER.x+c3dto2d(CUBE[i  ]).x, CUBECENTER.y+c3dto2d(CUBE[i  ]).y,
@@ -90,12 +93,4 @@ void draw_fg_cube() {
             CUBECENTER.x+c3dto2d(CUBE[0]).x, CUBECENTER.y+c3dto2d(CUBE[0]).y,
             CUBECENTER.x+c3dto2d(CUBE[4]).x, CUBECENTER.y+c3dto2d(CUBE[4]).y, CUBECHAR);
 
-
-    stringxy (5, 2, 2, WRITECHAR, to_string(c3dto2d(CUBE[0]).x) );
-    stringxy (5, 2, 3, WRITECHAR, to_string(c3dto2d(CUBE[0]).y) );
-
-    stringxy (5, 2, 5, WRITECHAR, to_string(c3dto2d(CUBE[4]).x) );
-    stringxy (5, 2, 6, WRITECHAR, to_string(c3dto2d(CUBE[4]).y) );
-
-    //linexy( FG_CUBE_LAYER, c3dto2d(CUBE[0]).x, c3dto2d(CUBE[0]).y, c3dto2d(CUBE[2]).x,c3dto2d(CUBE[2]).y, CUBECHAR);
 }

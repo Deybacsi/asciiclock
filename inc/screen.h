@@ -1,5 +1,3 @@
-
-
 /*
  * If you have usual thin and tall rectangle characters, leave it on 2
  * 

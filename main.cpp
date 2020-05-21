@@ -1,3 +1,16 @@
+/*
+
+ASCII clock
+
+Dey - 2019
+
+This was a part of my C++ learning, this is why the code is not so thoughtful at some points.
+
+https://deybacsi.github.io/asciiclock/
+https://github.com/Deybacsi/asciiclock
+
+*/
+
 #include <sys/ioctl.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -40,13 +53,13 @@ typedef void (*myfunctions)();
 
 /* array with effects
 
-   0 - init
-   1 - calc next frame
-   2 - draw act frame to layers
+   0 - init function
+   1 - calc next frame func
+   2 - draw actual frame to layers
 
 */
 myfunctions background[][3] = {
-    { init_bg_snow, calc_bg_snow, draw_bg_snow},            // snow effect
+    { init_bg_snow, calc_bg_snow, draw_bg_snow},            // snow
     { init_bg_star, calc_bg_star, draw_bg_star},            // starfield
     { init_bg_plasma, calc_bg_plasma, draw_bg_plasma},      // plasma
     { init_bg_matrix, calc_bg_matrix, draw_bg_matrix},      // matrix
@@ -86,8 +99,8 @@ void init_all() {
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    // ACT_BG_EFFECT=3;
-    
+    //ACT_BG_EFFECT=5;
+
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
     foreground[ACT_FG_EFFECT][0]();

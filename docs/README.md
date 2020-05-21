@@ -11,6 +11,7 @@ You'll need a linux console and a C++ compiler. No. It will not run on Windows.
 
 ```
 git clone https://github.com/Deybacsi/asciiclock.git
+cd asciiclock
 ./run.sh
 
 ```

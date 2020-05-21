@@ -38,7 +38,6 @@ void draw_clock_digit(int layer, int px, int py, int digit, s_simplechar chr ) {
 
 void draw_clock_digital(int cx, int cy) {
     int digit,x,y,dx,dy;
-
     CLOCKCHAR.bcol=CLOCKCOLOR;
     dx=DIGITDESIGNS[ACTDIGITDESIGN].x;
     dy=DIGITDESIGNS[ACTDIGITDESIGN].y;

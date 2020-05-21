@@ -29,3 +29,4 @@ Currently it has:
 
 You can quit with pressing the `x` or `q` keys. Foreground effect(s) can be toggled with `f`.
 
+A small fancy video is available on [YouTube](https://youtu.be/-2mY1qRn23I) about this whole thing :)

@@ -7,16 +7,15 @@ ASCII art is cool, but a living ASCII clock is much more cooler if you place it 
 ## Install & compile
 
 You'll need a linux console and a C++ compiler. No. It will not run on Windows.
-(It could on Windows Subsystem for Linux, or in a virtual machine)
+(It can run on Windows Subsystem for Linux, or in a virtual machine)
 
 ```
 git clone https://github.com/Deybacsi/asciiclock.git
 cd asciiclock
 ./run.sh
-
 ```
 
-Or you can compile it manually, if it's easier for you :)
+Or you can compile it manually, if it's easier for you :) 
 
 ## Extras
 

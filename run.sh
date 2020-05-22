@@ -1,6 +1,6 @@
 clear
 
-g++ main.cpp -o bin/asciiclock -Werror -g
+g++ main.cpp -o bin/asciiclock
 
 if [ $? -eq 0 ];then
    bin/asciiclock 

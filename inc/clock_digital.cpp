@@ -7,6 +7,10 @@ const int CLOCKLAYER=2;
 // color of clock
 int CLOCKCOLOR=0;
 
+// color what can't be chosen during random color selection
+// background effects can change it -> and it's advised to do so
+int AVOIDCLOCKCOLOR=0;
+
 s_simplechar CLOCKCHAR = { 32, 1, 2, true, true, false };
 
 // char for clearing the screen
@@ -18,7 +22,12 @@ s_simplechar CLOCKCLEAR = { 32, 0, 8, true, true, true};
 bool colon;
 
 void init_clock_digital() {
-    
+    // randomize clock charset design
+    ACTDIGITDESIGN=rand() % MAXDIGITDESIGNS;
+    // randomize clock color
+    do {
+        CLOCKCOLOR=rand() % 8;
+    } while (CLOCKCOLOR == AVOIDCLOCKCOLOR);
 };
 
 void draw_clock_digit(int layer, int px, int py, int digit, s_simplechar chr ) {

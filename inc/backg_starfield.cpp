@@ -56,6 +56,8 @@ void init_bg_star(){
     CLOCKCHAR.transpbcol=false;
     CLOCKCHAR.transpcol=true;
     CLOCKCHAR.transpchr=true;
+    // clock color can't be black
+    AVOIDCLOCKCOLOR=0;
 }
 
 

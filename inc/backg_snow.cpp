@@ -75,9 +75,12 @@ void init_bg_snow(){
     for (x=0; x<=SCREENX; x++) {
         SNOWBG[x][SCREENY-1]=1;
     }
+    // set clock transparency
     CLOCKCHAR.transpbcol=false;
     CLOCKCHAR.transpcol=true;
     CLOCKCHAR.transpchr=true;
+    // clock color can't be black
+    AVOIDCLOCKCOLOR=0;
 }
 
 // increase density of the snow at the ground

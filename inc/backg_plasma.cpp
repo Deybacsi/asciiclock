@@ -12,7 +12,7 @@ const int   PLASMALAYER     =1,             // where to draw effect - layer no
             MAXPLASMACHARS  =10,            // number of chars to draw
             MAXPLASMACOLORS =2;             // number of colorsets
 
-// precalculated sin & cos datas
+// precalculated sin & cos datas to speed up things
 // 0..360 needed, else there will be a horizontal & vertcical "crack"
 float sn[361], cs[361];
 
@@ -62,8 +62,10 @@ s_simplechar PLASMACHARS[MAXPLASMACHARS]={
 };
 */
 
+// initialize effect
 void init_bg_plasma(){
     int i,c;
+    // precalc the sin&cos datas
     for (i=0; i<=360; i++) {
         sn[i]=sin(i * PI/180);
         cs[i]=cos(i * PI/180);
@@ -73,9 +75,9 @@ void init_bg_plasma(){
     CLOCKCHAR.transpcol=false;
     CLOCKCHAR.transpchr=false;
     PLASMACOLOR=rand() % MAXPLASMACOLORS;
-
 }
 
+// calc next frame
 void calc_bg_plasma() {
     int x,y,c;
     clearlayer(0,PLASMACHARS[PLASMACOLOR][0]);
@@ -100,7 +102,6 @@ void calc_bg_plasma() {
             charxy(PLASMALAYER, x, y, PLASMACHARS[PLASMACOLOR][c]);
         }
     }
-    // stringxy(4,2,2,WRITECHAR,to_string(plasma_time));
 }
 
 void draw_bg_plasma() {

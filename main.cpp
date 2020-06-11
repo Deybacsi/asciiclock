@@ -40,6 +40,7 @@ using namespace std;
 
 #include "inc/backg_snow.cpp"
 #include "inc/backg_starfield.cpp"
+#include "inc/backg_starfield3d.cpp"
 #include "inc/backg_plasma.cpp"
 #include "inc/backg_matrix.cpp"
 #include "inc/backg_fire.cpp"
@@ -61,6 +62,7 @@ typedef void (*myfunctions)();
 myfunctions background[][3] = {
     { init_bg_snow, calc_bg_snow, draw_bg_snow},            // snow
     { init_bg_star, calc_bg_star, draw_bg_star},            // starfield
+    { init_bg_star3d, calc_bg_star3d, draw_bg_star3d},      // starfield 3d
     { init_bg_plasma, calc_bg_plasma, draw_bg_plasma},      // plasma
     { init_bg_matrix, calc_bg_matrix, draw_bg_matrix},      // matrix
     { init_bg_fire, calc_bg_fire, draw_bg_fire}             // fire
@@ -91,15 +93,11 @@ void init_all() {
     clear();
     clearalllayer(CLEARCHAR);
 
-    // randomize clock charset design
-    ACTDIGITDESIGN=rand() % MAXDIGITDESIGNS;
-    // randomize clock color
-    CLOCKCOLOR=rand() % 8;
     // get a random background effect
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    //ACT_BG_EFFECT=5;
+    //ACT_BG_EFFECT=2;
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();

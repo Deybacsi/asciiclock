@@ -45,6 +45,7 @@ using namespace std;
 #include "inc/backg_matrix.cpp"
 #include "inc/backg_fire.cpp"
 #include "inc/backg_labyrinth.cpp"
+#include "inc/backg_gameoflife.cpp"
 
 #include "inc/foreg_cube.cpp"
 
@@ -67,8 +68,9 @@ myfunctions background[][3] = {
     { init_bg_plasma, calc_bg_plasma, draw_bg_plasma},      // plasma
     { init_bg_matrix, calc_bg_matrix, draw_bg_matrix},      // matrix
     { init_bg_fire, calc_bg_fire, draw_bg_fire},             // fire
-    { init_bg_labyrinth, calc_bg_labyrinth, draw_bg_labyrinth}  // labyrinth
-     
+    { init_bg_labyrinth, calc_bg_labyrinth, draw_bg_labyrinth},  // labyrinth
+    { init_bg_gof, calc_bg_gof, draw_bg_gof}             // fire
+ 
 };
 
 
@@ -81,7 +83,7 @@ myfunctions foreground[][3] = {
 
 // number of our effects 
 // why don't we use length()?
-const int   BG_EFFECTNO=7,
+const int   BG_EFFECTNO=8,
             FG_EFFECTNO=1;
 
 int         ACT_BG_EFFECT=3,

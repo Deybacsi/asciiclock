@@ -82,7 +82,7 @@ void init_bg_labyrinth() {
         charxy(LABLAYER,0,x,LABWALL);
         charxy(LABLAYER,SCREENX-1,x,LABWALL);
     }
-    LAB_PLAYER={rand() % SCREENX, rand() % SCREENY};
+    LAB_PLAYER={1+rand() % (SCREENX-3), 1+rand() % (SCREENY-3)};
     labyrinth_grid (1,1);
 
     CLOCKCHAR.transpbcol=false;

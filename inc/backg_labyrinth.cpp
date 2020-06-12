@@ -74,6 +74,9 @@ void init_bg_labyrinth() {
     int x,y;
     clearalllayer(CLEARCHAR);
     clearlayer(LABLAYER, LABWALL);
+    LAB_PLAYER={1+rand() % (SCREENX-3), 1+rand() % (SCREENY-3)};
+    //labyrinth_grid (1,1);
+    labyrinth_grid (1+rand() % (SCREENX-3), 1+rand() % (SCREENY-3));
     for (x=0; x<SCREENX; x++) {
         charxy(LABLAYER,x,0,LABWALL);
         charxy(LABLAYER,x,SCREENY-1,LABWALL);
@@ -82,8 +85,7 @@ void init_bg_labyrinth() {
         charxy(LABLAYER,0,x,LABWALL);
         charxy(LABLAYER,SCREENX-1,x,LABWALL);
     }
-    LAB_PLAYER={1+rand() % (SCREENX-3), 1+rand() % (SCREENY-3)};
-    labyrinth_grid (1,1);
+
 
     CLOCKCHAR.transpbcol=false;
     CLOCKCHAR.transpcol=false;

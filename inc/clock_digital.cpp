@@ -27,7 +27,7 @@ void init_clock_digital() {
     // randomize clock color
     do {
         CLOCKCOLOR=rand() % 8;
-    } while (CLOCKCOLOR == AVOIDCLOCKCOLOR);
+    } while (CLOCKCOLOR == AVOIDCLOCKCOLOR || CLOCKCOLOR == 0);
 };
 
 void draw_clock_digit(int layer, int px, int py, int digit, s_simplechar chr ) {

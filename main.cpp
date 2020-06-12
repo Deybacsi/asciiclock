@@ -44,6 +44,7 @@ using namespace std;
 #include "inc/backg_plasma.cpp"
 #include "inc/backg_matrix.cpp"
 #include "inc/backg_fire.cpp"
+#include "inc/backg_labyrinth.cpp"
 
 #include "inc/foreg_cube.cpp"
 
@@ -65,7 +66,8 @@ myfunctions background[][3] = {
     { init_bg_star3d, calc_bg_star3d, draw_bg_star3d},      // starfield 3d
     { init_bg_plasma, calc_bg_plasma, draw_bg_plasma},      // plasma
     { init_bg_matrix, calc_bg_matrix, draw_bg_matrix},      // matrix
-    { init_bg_fire, calc_bg_fire, draw_bg_fire}             // fire
+    { init_bg_fire, calc_bg_fire, draw_bg_fire},             // fire
+    { init_bg_labyrinth, calc_bg_labyrinth, draw_bg_labyrinth}  // labyrinth
      
 };
 
@@ -79,7 +81,7 @@ myfunctions foreground[][3] = {
 
 // number of our effects 
 // why don't we use length()?
-const int   BG_EFFECTNO=5,
+const int   BG_EFFECTNO=7,
             FG_EFFECTNO=1;
 
 int         ACT_BG_EFFECT=3,
@@ -97,7 +99,7 @@ void init_all() {
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    //ACT_BG_EFFECT=2;
+    //ACT_BG_EFFECT=6;
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
@@ -121,6 +123,9 @@ int main(){
 
     init_all();
     init_clock_digital();
+
+    checktime();
+    LAST_MINSTR[0] = ACT_MINSTR[0];
     
     while(ch!=27 && ch!=113 && ch!=120) {
         // current millisec for proper FPS counting

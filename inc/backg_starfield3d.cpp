@@ -72,6 +72,7 @@ void init_bg_star3d(){
     CLOCKCHAR.transpbcol=false;
     CLOCKCHAR.transpcol=false;
     CLOCKCHAR.transpchr=false;
+    AVOIDCLOCKCOLOR=0;
 }
 
 // calculate the new position of STARS

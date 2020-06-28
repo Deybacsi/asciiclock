@@ -63,6 +63,9 @@ void labyrinth_grid(int x, int y) {
             if (LAYER[LABLAYER][x+DIRECTIONS[DIRSELECTOR[direction]].x*2][y+DIRECTIONS[DIRSELECTOR[direction]].y*2].chr==LABWALL.chr) {
                 // remove the wall in that direction
                 charxy(LABLAYER,x+DIRECTIONS[DIRSELECTOR[direction]].x,y+DIRECTIONS[DIRSELECTOR[direction]].y, LABEMPTY);
+                // draw the clock
+                //draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
+
                 // draw the screen
                 mergelayers();
                 printscreen();

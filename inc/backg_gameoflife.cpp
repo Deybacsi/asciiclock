@@ -46,7 +46,7 @@ void calc_bg_gof() {
     int x,y,i,neighbors;
     bool cellalive;
     gof_counter++;
-    if (gof_counter % 3 != 0) { return; }
+    if (gof_counter % 2 != 0) { return; }
 
     clearlayer(GOF_LAYER+1, GOFDEAD);
     

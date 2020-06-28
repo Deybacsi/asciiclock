@@ -46,6 +46,7 @@ using namespace std;
 #include "inc/backg_fire.cpp"
 #include "inc/backg_labyrinth.cpp"
 #include "inc/backg_gameoflife.cpp"
+#include "inc/backg_obj3d.cpp"
 
 #include "inc/foreg_cube.cpp"
 
@@ -69,7 +70,8 @@ myfunctions background[][3] = {
     { init_bg_matrix, calc_bg_matrix, draw_bg_matrix},      // matrix
     { init_bg_fire, calc_bg_fire, draw_bg_fire},             // fire
     { init_bg_labyrinth, calc_bg_labyrinth, draw_bg_labyrinth},  // labyrinth
-    { init_bg_gof, calc_bg_gof, draw_bg_gof}             // fire
+    { init_bg_gof, calc_bg_gof, draw_bg_gof},               // game of life
+    { init_bg_obj3d, calc_bg_obj3d, draw_bg_obj3d},
  
 };
 
@@ -101,7 +103,7 @@ void init_all() {
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    //ACT_BG_EFFECT=7;
+    //ACT_BG_EFFECT=8;
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
@@ -122,9 +124,9 @@ int main(){
 
     // elapsed time counter in msec
     int nTimeElapsed =0;
-
-    init_all();
     init_clock_digital();
+    init_all();
+    
 
     checktime();
     LAST_MINSTR[0] = ACT_MINSTR[0];

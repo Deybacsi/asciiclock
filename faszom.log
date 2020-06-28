@@ -1,5 +1,0 @@
-In file included from main.cpp:48:0:
-inc/backg_gameoflife.cpp: In function ‘void calc_bg_gof()’:
-inc/backg_gameoflife.cpp:44:42: error: invalid array assignment
-             LAYER[GOF_LAYER]=LAYER[faszom];
-                                          ^

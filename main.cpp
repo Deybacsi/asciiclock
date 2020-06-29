@@ -85,7 +85,7 @@ myfunctions foreground[][3] = {
 
 // number of our effects 
 // why don't we use length()?
-const int   BG_EFFECTNO=8,
+const int   BG_EFFECTNO=9,
             FG_EFFECTNO=1;
 
 int         ACT_BG_EFFECT=3,

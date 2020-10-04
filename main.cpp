@@ -138,6 +138,7 @@ int main(){
         checktime();
         // if minute changed, reinit everything
         if (LAST_MINSTR[0] != ACT_MINSTR[0]) {
+            init_clock_digital();
             init_all();
         }
      

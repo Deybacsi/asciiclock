@@ -1,0 +1,20 @@
+
+## Setup TTY console font:
+dpkg-reconfigure console-setup
+	font: VGA, size: 8x16
+
+sudo nano /etc/default/grub
+add:
+	GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"
+	GRUB_GFXPAYLOAD_LINUX=640x400
+	GRUB_TERMINAL=console
+sudo update-grub
+
+## User autologin to TTY1
+sudo systemctl edit getty@tty1.service
+add:
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --noissue --autologin myusername %I $TERM
+Type=idle
+
